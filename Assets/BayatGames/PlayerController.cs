@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheckPoint;
     public float groundCheckRadius;
     public LayerMask whatIsGround;
+    public LayerMask thisLayer;
 
     bool isGrounded;
 
@@ -39,5 +40,12 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(jump) && isGrounded) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D coll) {
+        if(coll.gameObject.CompareTag("Collectables")){
+            Destroy(coll.gameObject);
+        }
+
     }
 }

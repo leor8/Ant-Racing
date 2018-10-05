@@ -1,14 +1,22 @@
-﻿// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-// public class camera_follow : MonoBehaviour {
+public class camera_follow : MonoBehaviour {
 
-//   public Transform target;
+  private int timer = 300;
 
-// 	void Update () {
-//     if(target.position.y > transform.position.y) {
-//       transform.position = new Vector3 (0f, target.position.y, -10f);
-//     }
-// 	}
-// }
+  void Start() {
+  }
+
+  void Update() {
+    timer--;
+    if(timer <= 0) {
+      transform.Translate(Vector3.up * (Time.deltaTime*2), Space.World);
+    }
+
+  }
+
+
+
+}
