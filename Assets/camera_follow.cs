@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class camera_follow : MonoBehaviour {
 
-  private int timer = 300;
+  private int timer = 100;
 
   void Start() {
   }

@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private bool printed = false;
 
     private Rigidbody2D rb;
+    private PlayerController enemy;
 
     // powerup variables
     private bool speeded = false;
@@ -30,6 +31,11 @@ public class PlayerController : MonoBehaviour
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         inventory = GetComponent<Inventory>();
+        if(this.tag == "Player"){
+            enemy = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>();
+        } else {
+            enemy = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        }
     }
 
     void Update () {
@@ -53,29 +59,51 @@ public class PlayerController : MonoBehaviour
         }
 
         if(Input.GetKey(powerup1)){
-            // Speed up
-            if(inventory.isFull[0]) {
-                Destroy(inventory.slots[0]);
-                inventory.isFull[0] = false;
-                if(!speeded) {
-                    speed += 10;
-                    speeded = true;
-                }
 
-            }
+
+            ///////////// This section is for code to Speed up //////
+            // if(inventory.isFull[0]) {
+            //     Destroy(inventory.slots[0]);
+            //     inventory.isFull[0] = false;
+            //     if(!speeded) { // Set a timer here and make sure it only runs for 1 frame per cast
+            //         speed += 10;
+            //         speeded = true;
+            //     }
+            // }
+
+            ///////////// This section is for code to Jump higher //////
+            //     if(inventory.isFull[1]) {
+            //         Destroy(inventory.slots[1]);
+            //         inventory.isFull[1] = false;
+            //         if(!speeded) {
+            //             jumpForce += 10;
+            //             speeded = true;
+            //         }
+            //     }
+
+            ///////////// This section is for code to slow down enemy /////////
+                if(inventory.isFull[0]) {
+                    Destroy(inventory.slots[0]);
+                    inventory.isFull[0] = false;
+                    if(!speeded) {
+                        enemy.speed -= 5;
+                        speeded = true;
+                    }
+                }
+            //
         }
 
-        if(Input.GetKey(powerup2)) {
-            // Jump Higher
-            if(inventory.isFull[1]) {
-                Destroy(inventory.slots[1]);
-                inventory.isFull[1] = false;
-                if(!speeded) {
-                    jumpForce += 10;
-                    speeded = true;
-                }
-            }
-        }
+        // if(Input.GetKey(powerup2)) {
+        //     // Jump Higher
+        //     if(inventory.isFull[1]) {
+        //         Destroy(inventory.slots[1]);
+        //         inventory.isFull[1] = false;
+        //         if(!speeded) {
+        //             jumpForce += 10;
+        //             speeded = true;
+        //         }
+        //     }
+        // }
 
 
     }
