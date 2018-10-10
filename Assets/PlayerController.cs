@@ -72,9 +72,9 @@ public class PlayerController : MonoBehaviour
             // }
 
             ///////////// This section is for code to Jump higher //////
-            //     if(inventory.isFull[1]) {
+            //     if(inventory.isFull[0]) {
             //         Destroy(inventory.slots[1]);
-            //         inventory.isFull[1] = false;
+            //         inventory.isFull[0] = false;
             //         if(!speeded) {
             //             jumpForce += 10;
             //             speeded = true;

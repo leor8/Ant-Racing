@@ -7,7 +7,7 @@ public class snowflakes_spawner : MonoBehaviour {
   float randX;
   float randY;
   Vector2 spawn_location;
-  public float spawn_rate = 2f;
+  public float spawn_rate = 0.1f;
   float nextSpawn = 0.0f;
 
 	// Use this for initialization
@@ -22,6 +22,7 @@ public class snowflakes_spawner : MonoBehaviour {
       randX = Random.Range(-27.1f, 23.7f);
       randY = Random.Range(99.1f, 136.3f);
       spawn_location = new Vector2(randX, randY);
+      Instantiate(snowflake, spawn_location, Quaternion.identity);
     }
 	}
 }
