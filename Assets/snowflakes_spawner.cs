@@ -19,10 +19,12 @@ public class snowflakes_spawner : MonoBehaviour {
 	void Update () {
     if(Time.time > nextSpawn) {
       nextSpawn = Time.time + spawn_rate;
-      randX = Random.Range(-27.1f, 23.7f);
-      randY = Random.Range(99.1f, 136.3f);
-      spawn_location = new Vector2(randX, randY);
-      Instantiate(snowflake, spawn_location, Quaternion.identity);
+      for(int i = 0; i < 3; i++) {
+        randX = Random.Range(-27.1f, 23.7f);
+        randY = Random.Range(99.1f, 136.3f);
+        spawn_location = new Vector2(randX, randY);
+        Instantiate(snowflake, spawn_location, Quaternion.identity);
+      }
     }
 	}
 }

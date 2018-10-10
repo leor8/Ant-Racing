@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
     // powerup variables
     private bool speeded = false;
 
+    // Snowflakes related
+    private bool frozen = false;
+    private int freeze_timer = 60;
+
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         inventory = GetComponent<Inventory>();
@@ -62,14 +66,14 @@ public class PlayerController : MonoBehaviour
 
 
             ///////////// This section is for code to Speed up //////
-            // if(inventory.isFull[0]) {
-            //     Destroy(inventory.slots[0]);
-            //     inventory.isFull[0] = false;
-            //     if(!speeded) { // Set a timer here and make sure it only runs for 1 frame per cast
-            //         speed += 10;
-            //         speeded = true;
-            //     }
-            // }
+            if(inventory.isFull[0]) {
+                Destroy(inventory.slots[0]);
+                inventory.isFull[0] = false;
+                if(!speeded) { // Set a timer here and make sure it only runs for 1 frame per cast
+                    speed += 50;
+                    speeded = true;
+                }
+            }
 
             ///////////// This section is for code to Jump higher //////
             //     if(inventory.isFull[0]) {
@@ -82,14 +86,14 @@ public class PlayerController : MonoBehaviour
             //     }
 
             ///////////// This section is for code to slow down enemy /////////
-                if(inventory.isFull[0]) {
-                    Destroy(inventory.slots[0]);
-                    inventory.isFull[0] = false;
-                    if(!speeded) {
-                        enemy.speed -= 5;
-                        speeded = true;
-                    }
-                }
+                // if(inventory.isFull[0]) {
+                //     Destroy(inventory.slots[0]);
+                //     inventory.isFull[0] = false;
+                //     if(!speeded) {
+                //         enemy.speed -= 5;
+                //         speeded = true;
+                //     }
+                // }
             //
         }
 
@@ -106,6 +110,15 @@ public class PlayerController : MonoBehaviour
         // }
 
 
+        // Snowflakes related
+        if(frozen) {
+            freeze_timer--;
+            if(freeze_timer <= 0) {
+                freeze_timer = 60;
+                frozen = false;
+                speed = 15;
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D coll) {
@@ -113,6 +126,14 @@ public class PlayerController : MonoBehaviour
             Destroy(coll.gameObject);
             // int curr_powerup = Random.Range(0, powerup_pool.Length);
             // inventory.Add(powerup_pool[curr_powerup]);
+        }
+
+        if(coll.CompareTag("Snowflake")) {
+            Destroy(coll.gameObject);
+            if(!frozen) {
+                frozen = true;
+                speed = 0;
+            }
         }
 
     }

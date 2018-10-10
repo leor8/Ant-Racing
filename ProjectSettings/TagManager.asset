@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collectables
   - Player2
+  - Snowflake
   layers:
   - Default
   - TransparentFX
