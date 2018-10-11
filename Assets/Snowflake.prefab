@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212758030409020710}
   - component: {fileID: 61165878805523546}
   - component: {fileID: 50942809086368318}
+  - component: {fileID: 95407555783791244}
   m_Layer: 0
   m_Name: snowflake
   m_TagString: Snowflake
@@ -87,6 +88,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 21.89, y: 21.739998}
   m_EdgeRadius: 0
+--- !u!95 &95407555783791244
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1273341039987968}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0b16cbae793a4877a1fb2073d6b344f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &212758030409020710
 SpriteRenderer:
   m_ObjectHideFlags: 1
