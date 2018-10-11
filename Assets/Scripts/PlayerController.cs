@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 
@@ -32,6 +33,9 @@ public class PlayerController : MonoBehaviour
     private bool frozen = false;
     private int freeze_timer = 60;
 
+    // Camera variables
+    public GameObject target_cam;
+
     void Start() {
         rb = GetComponent<Rigidbody2D>();
         inventory = GetComponent<Inventory>();
@@ -43,6 +47,15 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update () {
+
+
+        // Check if player failed to catch up with the camera
+        if(gameObject.tag == "Player2" && gameObject.transform.position.y < target_cam.transform.position.y - 15){
+            SceneManager.LoadScene(4);
+        }
+        if(gameObject.tag == "Player" && gameObject.transform.position.y < target_cam.transform.position.y - 15){
+            SceneManager.LoadScene(5);
+        }
 
 
         // Checking if the player is on ground otherwise the player should not be able to jump mid-air
@@ -135,10 +148,6 @@ public class PlayerController : MonoBehaviour
                 speed = 0;
             }
         }
-
-    }
-
-    void using_powerup() {
 
     }
 }
