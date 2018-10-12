@@ -53,12 +53,12 @@ public class PlayerController : MonoBehaviour
 
 
         // Check if player failed to catch up with the camera
-        if(gameObject.tag == "Player2" && gameObject.transform.position.y < target_cam.transform.position.y - 15){
-            SceneManager.LoadScene(4);
-        }
-        if(gameObject.tag == "Player" && gameObject.transform.position.y < target_cam.transform.position.y - 15){
-            SceneManager.LoadScene(5);
-        }
+        // if(gameObject.tag == "Player2" && gameObject.transform.position.y < target_cam.transform.position.y - 15){
+        //     SceneManager.LoadScene(4);
+        // }
+        // if(gameObject.tag == "Player" && gameObject.transform.position.y < target_cam.transform.position.y - 15){
+        //     SceneManager.LoadScene(5);
+        // }
 
 
         // Checking if the player is on ground otherwise the player should not be able to jump mid-air
