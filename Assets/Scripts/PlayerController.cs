@@ -21,13 +21,16 @@ public class PlayerController : MonoBehaviour
 
     public  bool isGrounded;
 
-    private bool printed = false;
-
     private Rigidbody2D rb;
     private PlayerController enemy;
 
     // powerup variables
     private bool speeded = false;
+    private bool jumped = false;
+    private bool slowed = false;
+    private int speed_length = 180;
+    private int jump_length = 180;
+    private int slow_length = 180;
 
     // Snowflakes related
     private bool frozen = false;
@@ -50,12 +53,12 @@ public class PlayerController : MonoBehaviour
 
 
         // Check if player failed to catch up with the camera
-        // if(gameObject.tag == "Player2" && gameObject.transform.position.y < target_cam.transform.position.y - 15){
-        //     SceneManager.LoadScene(4);
-        // }
-        // if(gameObject.tag == "Player" && gameObject.transform.position.y < target_cam.transform.position.y - 15){
-        //     SceneManager.LoadScene(5);
-        // }
+        if(gameObject.tag == "Player2" && gameObject.transform.position.y < target_cam.transform.position.y - 15){
+            SceneManager.LoadScene(4);
+        }
+        if(gameObject.tag == "Player" && gameObject.transform.position.y < target_cam.transform.position.y - 15){
+            SceneManager.LoadScene(5);
+        }
 
 
         // Checking if the player is on ground otherwise the player should not be able to jump mid-air
@@ -84,42 +87,49 @@ public class PlayerController : MonoBehaviour
                 if(!speeded) { // Set a timer here and make sure it only runs for 1 frame per cast
                     speed += 10;
                     speeded = true;
+                    speed_length--;
+
+                    if(speed_length <= 0) {
+                        speed -= 10;
+                        speeded = false;
+                        speed_length = 180;
+                    }
                 }
             }
-
-            ///////////// This section is for code to Jump higher //////
-            //     if(inventory.isFull[0]) {
-            //         Destroy(inventory.slots[1]);
-            //         inventory.isFull[0] = false;
-            //         if(!speeded) {
-            //             jumpForce += 10;
-            //             speeded = true;
-            //         }
-            //     }
-
-            ///////////// This section is for code to slow down enemy /////////
-                // if(inventory.isFull[0]) {
-                //     Destroy(inventory.slots[0]);
-                //     inventory.isFull[0] = false;
-                //     if(!speeded) {
-                //         enemy.speed -= 5;
-                //         speeded = true;
-                //     }
-                // }
-            //
         }
 
-        // if(Input.GetKey(powerup2)) {
-        //     // Jump Higher
-        //     if(inventory.isFull[1]) {
-        //         Destroy(inventory.slots[1]);
-        //         inventory.isFull[1] = false;
-        //         if(!speeded) {
-        //             jumpForce += 10;
-        //             speeded = true;
-        //         }
-        //     }
-        // }
+        if(Input.GetKey(powerup2)) {
+            if(inventory.isFull[1]) {
+                inventory.isFull[1] = false;
+                if(!jumped) { // Set a timer here and make sure it only runs for 1 frame per cast
+                    jumpForce += 10;
+                    jumped = true;
+                    jump_length--;
+
+                    if(jump_length <= 0) {
+                        jumpForce -= 10;
+                        jumped = false;
+                        jump_length = 180;
+                    }
+                }
+            }
+        }
+
+        if(Input.GetKey(powerup3)) {
+            if(inventory.isFull[2]) {
+                inventory.isFull[2] = false;
+                if(!slowed) {
+                    enemy.speed -= 5;
+                    slowed = true;
+                    slow_length--;
+                    if(slow_length <= 0) {
+                        enemy.speed += 5;
+                        slowed = false;
+                        slow_length = 180;
+                    }
+                }
+            }
+        }
 
 
         // Snowflakes related
