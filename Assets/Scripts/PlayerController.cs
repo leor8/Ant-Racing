@@ -87,13 +87,6 @@ public class PlayerController : MonoBehaviour
                 if(!speeded) { // Set a timer here and make sure it only runs for 1 frame per cast
                     speed += 10;
                     speeded = true;
-                    speed_length--;
-
-                    if(speed_length <= 0) {
-                        speed -= 10;
-                        speeded = false;
-                        speed_length = 180;
-                    }
                 }
             }
         }
@@ -102,15 +95,8 @@ public class PlayerController : MonoBehaviour
             if(inventory.isFull[1]) {
                 inventory.isFull[1] = false;
                 if(!jumped) { // Set a timer here and make sure it only runs for 1 frame per cast
-                    jumpForce += 10;
+                    jumpForce += 15;
                     jumped = true;
-                    jump_length--;
-
-                    if(jump_length <= 0) {
-                        jumpForce -= 10;
-                        jumped = false;
-                        jump_length = 180;
-                    }
                 }
             }
         }
@@ -121,13 +107,36 @@ public class PlayerController : MonoBehaviour
                 if(!slowed) {
                     enemy.speed -= 5;
                     slowed = true;
-                    slow_length--;
-                    if(slow_length <= 0) {
-                        enemy.speed += 5;
-                        slowed = false;
-                        slow_length = 180;
-                    }
                 }
+            }
+        }
+
+        if(speeded) {
+            speed_length--;
+            print("here");
+            if(speed_length <= 0) {
+                speed -= 10;
+                speeded = false;
+                speed_length = 180;
+            }
+        }
+
+        if(jumped) {
+            jump_length--;
+
+            if(jump_length <= 0) {
+                jumpForce -= 15;
+                jumped = false;
+                jump_length = 180;
+            }
+        }
+
+        if(slowed) {
+            slow_length--;
+            if(slow_length <= 0) {
+                enemy.speed += 5;
+                slowed = false;
+                slow_length = 180;
             }
         }
 
