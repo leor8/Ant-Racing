@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114333856056679142}
   - component: {fileID: 61392738840937092}
   m_Layer: 10
-  m_Name: Image (12)
+  m_Name: SpeedUp
   m_TagString: Collectables
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemButton: {fileID: 1423025940237512}
+  powerupType: 0
 --- !u!222 &222240356457604668
 CanvasRenderer:
   m_ObjectHideFlags: 1
