@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float jumpForce;
 
-    public KeyCode left, right, jump, powerup1, powerup2, powerup3, powerup4, powerup5;
+    public KeyCode left, right, jump, powerup1, powerup2, powerup3;
 
     public Transform groundCheckPoint;
     public float groundCheckRadius;
@@ -80,10 +80,9 @@ public class PlayerController : MonoBehaviour
 
             ///////////// This section is for code to Speed up //////
             if(inventory.isFull[0]) {
-                Destroy(inventory.slots[0]);
                 inventory.isFull[0] = false;
                 if(!speeded) { // Set a timer here and make sure it only runs for 1 frame per cast
-                    speed += 50;
+                    speed += 10;
                     speeded = true;
                 }
             }

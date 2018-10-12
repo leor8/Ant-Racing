@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class pickup : MonoBehaviour {
   private Inventory inventory;
   private Inventory inventory2;
   public GameObject itemButton;
   private GameObject newItem;
+  public int powerupType;
 
 	// Use this for initialization
 	void Start () {
@@ -21,27 +23,16 @@ public class pickup : MonoBehaviour {
 
   void OnTriggerEnter2D(Collider2D coll) {
     if(coll.CompareTag("Player")) {
-      for(int i = 0; i < inventory.slots.Length; i++) {
-        if(!inventory.isFull[i]){
-          newItem = Instantiate(itemButton, inventory.slots[i].transform);
-          newItem.transform.localScale += new Vector3(1.5F, 1F, 0);
-          newItem.transform.position = new Vector2(newItem.transform.position.x + 0.7f, newItem.transform.position.y + 0.9f);
-          inventory.isFull[i] = true;
-          Destroy(gameObject);
-          break;
+        if(!inventory.isFull[powerupType]){
+          inventory.isFull[powerupType] = true;
         }
-      }
+          Destroy(gameObject);
+
     } else if (coll.CompareTag("Player2")){
-      for(int i = 0; i < inventory2.slots.Length; i++) {
-        if(!inventory2.isFull[i]){
-          newItem = Instantiate(itemButton, inventory2.slots[i].transform);
-          newItem.transform.localScale += new Vector3(1.5F, 1F, 0);
-          newItem.transform.position = new Vector2(newItem.transform.position.x + 0.7f, newItem.transform.position.y + 0.9f);
-          inventory2.isFull[i] = true;
-          Destroy(gameObject);
-          break;
+        if(!inventory2.isFull[powerupType]){
+          inventory2.isFull[powerupType] = true;
         }
-      }
+        Destroy(gameObject);
     }
 
   }
