@@ -28,9 +28,9 @@ public class PlayerController : MonoBehaviour
     private bool speeded = false;
     private bool jumped = false;
     private bool slowed = false;
-    private int speed_length = 180;
-    private int jump_length = 180;
-    private int slow_length = 180;
+    private int speed_length = 300;
+    private int jump_length = 300;
+    private int slow_length = 300;
 
     // Snowflakes related
     private bool frozen = false;
@@ -53,12 +53,12 @@ public class PlayerController : MonoBehaviour
 
 
         // Check if player failed to catch up with the camera
-        if(gameObject.tag == "Player2" && gameObject.transform.position.y < target_cam.transform.position.y - 15){
-            SceneManager.LoadScene(5);
-        }
-        if(gameObject.tag == "Player" && gameObject.transform.position.y < target_cam.transform.position.y - 15){
-            SceneManager.LoadScene(6);
-        }
+        // if(gameObject.tag == "Player2" && gameObject.transform.position.y < target_cam.transform.position.y - 15){
+        //     SceneManager.LoadScene(5);
+        // }
+        // if(gameObject.tag == "Player" && gameObject.transform.position.y < target_cam.transform.position.y - 15){
+        //     SceneManager.LoadScene(6);
+        // }
 
 
         // Checking if the player is on ground otherwise the player should not be able to jump mid-air
@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
             if(inventory.isFull[2]) {
                 inventory.isFull[2] = false;
                 if(!slowed) {
-                    enemy.speed -= 5;
+                    enemy.speed -= 10;
                     slowed = true;
                 }
             }
@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
             if(speed_length <= 0) {
                 speed -= 10;
                 speeded = false;
-                speed_length = 180;
+                speed_length = 300;
             }
         }
 
@@ -127,16 +127,16 @@ public class PlayerController : MonoBehaviour
             if(jump_length <= 0) {
                 jumpForce -= 15;
                 jumped = false;
-                jump_length = 180;
+                jump_length = 300;
             }
         }
 
         if(slowed) {
             slow_length--;
             if(slow_length <= 0) {
-                enemy.speed += 5;
+                enemy.speed += 10;
                 slowed = false;
-                slow_length = 180;
+                slow_length = 300;
             }
         }
 

@@ -2675,7 +2675,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c968bb80842ee4f8f9cf227e5afe98f6, type: 3}
   m_Name: 
@@ -4478,9 +4478,9 @@ MonoBehaviour:
   left: 97
   right: 100
   jump: 119
-  powerup1: 104
-  powerup2: 106
-  powerup3: 107
+  powerup1: 99
+  powerup2: 118
+  powerup3: 98
   groundCheckPoint: {fileID: 1525352542}
   groundCheckRadius: 1.27
   whatIsGround:
@@ -7081,6 +7081,21 @@ Prefab:
       propertyPath: target_cam
       value: 
       objectReference: {fileID: 519420028}
+    - target: {fileID: 114066727446634428, guid: c119251493ab943849f185646d625c20,
+        type: 2}
+      propertyPath: powerup1
+      value: 106
+      objectReference: {fileID: 0}
+    - target: {fileID: 114066727446634428, guid: c119251493ab943849f185646d625c20,
+        type: 2}
+      propertyPath: powerup2
+      value: 107
+      objectReference: {fileID: 0}
+    - target: {fileID: 114066727446634428, guid: c119251493ab943849f185646d625c20,
+        type: 2}
+      propertyPath: powerup3
+      value: 108
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c119251493ab943849f185646d625c20, type: 2}
   m_IsPrefabAsset: 0
@@ -8808,9 +8823,9 @@ MonoBehaviour:
   left: 276
   right: 275
   jump: 273
-  powerup1: 99
-  powerup2: 118
-  powerup3: 98
+  powerup1: 106
+  powerup2: 107
+  powerup3: 108
   groundCheckPoint: {fileID: 989146981}
   groundCheckRadius: 1.27
   whatIsGround:

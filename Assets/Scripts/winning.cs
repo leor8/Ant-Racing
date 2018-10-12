@@ -19,10 +19,10 @@ public class winning : MonoBehaviour {
   void OnTriggerEnter2D(Collider2D coll) {
     heer = true;
     if(coll.CompareTag("Player")) {
-      SceneManager.LoadScene(4);
+      SceneManager.LoadScene(5);
     }
     if(coll.CompareTag("Player2")) {
-      SceneManager.LoadScene(5);
+      SceneManager.LoadScene(6);
     }
   }
 }

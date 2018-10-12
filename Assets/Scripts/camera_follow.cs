@@ -12,7 +12,7 @@ public class camera_follow : MonoBehaviour {
   void Update() {
     timer--;
     if(timer <= 0) {
-      transform.Translate(Vector3.up * (Time.deltaTime*2), Space.World);
+      transform.Translate(Vector3.up * (Time.deltaTime*1), Space.World);
     }
 
   }
